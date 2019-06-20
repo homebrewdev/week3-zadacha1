@@ -14,11 +14,11 @@ struct First {
     var second:Second?
     // сабскрипт с входным индексом index выводит строку - элемент массива из структуры Third
     subscript(index: Int) -> String {
-        // делаем проверку на индекс в пределах исходного массива
-        // нафиг индекс надо проверить на нил массив!!!
+
         let count = second?.third?.strArray?.count
+        // делаем проверку на nil
         if second?.third?.strArray != nil {
-            // проверка что индекс массива не задан больше чем count
+            // проверка, что индекс массива не задан больше, чем count
             if (index<=count!) {
                 return second?.third?.strArray?[index] ?? "string is nil!" // строку из массива структуры Third
             } else {
@@ -27,7 +27,7 @@ struct First {
         } else {
             return "Массив не содержит ни одной строки"
         }
-    return "none"
+    return "complete!"
     }
 }
 
@@ -43,7 +43,7 @@ struct Third {
 let sourceArr: Array<String> = ["One", "Two", "Three"]
 let initArr: Array<String> = []
 
-var third = Third(strArray: sourceArr) //проинициализируем с пустым массивом initArr
+var third = Third(strArray: sourceArr) //проинициализируем с массивом sourceArr
 var second = Second(third: third)
 var first = First(second: second)
 
